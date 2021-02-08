@@ -1,4 +1,6 @@
-// Include a file
+function _(id) {return document.getElementById(id); }
+
+// Include a fil
 function includeHTML() {
 	let z, i, elmnt, file, xhttp;
 	/*loop through a collection of all HTML elements:*/
@@ -120,3 +122,29 @@ function changeImages() {
 	setTimeout('changeImages()', 3000);
 }
 window.onload = changeImages;
+//
+function submitForm() {
+	var status = _("response_status");
+	status.innerHTML = "Please wait ...";
+	var formdata = new FormData();
+	formdata.append("email", _("email_from").value );
+	formdata.append("message", _("contact_message").value );
+	var ajax = new XMLHttpRequest();
+	ajax.open("POST", "send_email.php");
+	ajax.onreadystatechange = function () {
+		if(ajax.readyState == 4 && ajax.status == 200) {
+			if(ajax.responseText == "success") {
+				_("email_from").value = "";
+				_("contact_message").value = "";
+				_("response_status").innerHTML = 'Thank you! your message is sent';
+				setTimeout(function(){ _("response_status").innerHTML = ""; }, 3000);
+			} else {
+				_("response_status").innerHTML = ajax.responseText;
+				_("my_btn").disabled = false;
+				setTimeout(function(){ _("response_status").innerHTML = ""; }, 3000);
+			}
+		}
+	}
+	ajax.send(formdata);
+}
+
