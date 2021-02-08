@@ -47,26 +47,26 @@ function includeHTML() {
 	// In who we are section
 	document.querySelector(
 		'#status'
-	).innerHTML = `Discover our high quality children's clothes for charming and timeless look. 
-					Explore our elegant selection of baby gifts.
+	).innerHTML = `Discover our high quality children's clothes for charming and timeless look, 
+					Explore our elegant selection of baby gifts. <br />
 					These Clothes are second hand clothes (Caguwa), and brand news designer brands imported from Europe, Canada and USA.`;
 
 	// Abous us section
 	// left section in about us
 	document.querySelector(
 		'#mission'
-	).innerHTML = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni asperiores velit!`;
+	).innerHTML = `We're dedicated to giving you the very best of products, with a focus on uniqueness.`;
 
 	// middle section in about us
-	document.aboutimg.src = './images/cover.jpg';
+	document.aboutimg.src = './images/jack_boys.jpg';
 	document.querySelector(
 		'#img-caption'
-	).innerHTML = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni asperiores velit!`;
+	).innerHTML = `Welcome to Keza Kids Shop, your number one source for all your children clothes and toys.`;
 
 	// right section in about us
 	document.querySelector(
 		'#visions'
-	).innerHTML = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni asperiores velit!`;
+	).innerHTML = `We want to serve customers all over Kigali City, and are thrilled to be a part of the your children's happiness!`;
 
 	// In team section
 	document.firstimg.src = './images/avatar.jpg';
@@ -95,7 +95,7 @@ function includeHTML() {
 	document.querySelector('#facebook').href = 'http://www.facebook.com';
 	document.querySelector('#twitter').href = 'http://www.twitter.com';
 	document.querySelector('#instagram').href = 'http://www.instagram.com';
-	document.querySelector('#whatsapp').href = 'https://wa.me/+250788384757';
+	document.querySelector('#whatsapp').href = 'https://wa.me/';
 	document.querySelector('#youtube').href = 'http://www.youtube.com';
 	document.querySelector('#linkedin').href = 'http://www.linkedin.com';
 }
@@ -106,9 +106,9 @@ let j = 0;
 
 const images = [
 	'./images/cover_page.jpg',
-	/* './images/cover.jpg',
-	'./images/s1.jpeg',
-	'./images/s2.jpeg',
+	'./images/toys_2.jpg',
+	'./images/jack_boys.jpg',
+	/* './images/s2.jpeg',
 	'./images/s3.jpeg',
 	'./images/slide1.jpg',
 	'./images/slide2.jpg',
@@ -124,7 +124,7 @@ const serviceImages = [
 	},
 	{ image: './images/boys_t_shirts.jpg', title: 'T Shirts', text: 'Boys T-Shirts' },
 	{ image: './images/girl_dress.jpg', title: 'Dresses', text: 'Girl dresses' },
-	{ image: './images/kids_combo.jpg', title: 'Combo', text: 'Top and short' },
+	{ image: './images/kids_combo.jpg', title: 'Children clothes', text: 'Top and shorts' },
 ];
 
 function changeImages() {
