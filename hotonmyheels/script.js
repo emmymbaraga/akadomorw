@@ -101,13 +101,13 @@ const images = [
 const serviceImages = [
 	{
 		image: './images/view.jpg',
-		title: 'Title 1',
-		text: 'Outside view',
+		title: 'Kimono',
+		text: 'A Brown Kimono with that elegant look.',
 	},
-	{ image: './images/s1.jpg', title: 'Title 2', text: 'Swimming pool' },
-	{ image: './images/s4.jpg', title: 'Title 3', text: 'For lunch' },
-	{ image: './images/s2.jpg', title: 'Title 3', text: 'For lunch' },
-	{ image: './images/s3.jpg', title: 'Title 3', text: 'For lunch' },
+	{ image: './images/s1.jpg', title: 'Pattern Scarf', text: 'A luxurious dazzling long and diaphanous scarf for your neck.' },
+	{ image: './images/s4.jpg', title: 'Earings', text: 'Round Army Greens.' },
+	{ image: './images/s2.jpg', title: 'Hats', text: 'Bucket Brown-ish.' },
+	{ image: './images/s3.jpg', title: 'Bags', text: 'croc Shoulder Bag.' },
 ];
 
 function changeImages() {
