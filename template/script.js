@@ -1,3 +1,4 @@
+function _(id) {return document.getElementById(id); }
 // Include a file
 function includeHTML() {
 	let z, i, elmnt, file, xhttp;
@@ -71,21 +72,21 @@ function includeHTML() {
 	).innerHTML = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni asperiores velit!`;
 
 	// In team section
-	document.firstimg.src = './images/ceo.jpg';
+	document.firstimg.src = './images/avatar.jpg';
 	document.querySelector('#first-name').innerHTML = 'Granit Frank';
 	document.querySelector('#first-position').innerHTML = 'Co founder & CEO';
 
-	document.secondimg.src = './images/engineer.jpeg';
+	document.secondimg.src = './images/avatar.jpg';
 	document.querySelector('#second-name').innerHTML = 'William Haven';
 	document.querySelector('#second-position').innerHTML = 'Senior Engineer';
 
-	document.thirdimg.src = './images/analyst.jpg';
+	document.thirdimg.src = './images/avatar.jpg';
 	document.querySelector('#third-name').innerHTML = 'Marceline Dalosa';
 	document.querySelector('#third-position').innerHTML = 'Business Analyst';
 
-	document.fouthimg.src = './images/manager.png';
+	document.fouthimg.src = './images/avatar.jpg';
 	document.querySelector('#fouth-name').innerHTML = 'Alicia Wes';
-	document.querySelector('#fouth-position').innerHTML = 'Sales Manger';
+	document.querySelector('#fouth-position').innerHTML = 'Sales Manager';
 
 	// In contact us section
 	document.querySelector('#address').innerHTML = 'Kigali';
@@ -145,3 +146,28 @@ function changeImages() {
 	setTimeout('changeImages()', 3000);
 }
 window.onload = changeImages;
+
+function submitForm() {
+	var status = _("response_status");
+	status.innerHTML = "Please wait ...";
+	var formdata = new FormData();
+	formdata.append("email", _("email_from").value );
+	formdata.append("message", _("contact_message").value );
+	var ajax = new XMLHttpRequest();
+	ajax.open("POST", "send_email.php");
+	ajax.onreadystatechange = function () {
+		if(ajax.readyState == 4 && ajax.status == 200) {
+			if(ajax.responseText == "success") {
+				_("email_from").value = "";
+				_("contact_message").value = "";
+				_("response_status").innerHTML = 'Thank you! your message is sent';
+				setTimeout(function(){ _("response_status").innerHTML = ""; }, 3000);
+			} else {
+				_("response_status").innerHTML = ajax.responseText;
+				_("my_btn").disabled = false;
+				setTimeout(function(){ _("response_status").innerHTML = ""; }, 3000);
+			}
+		}
+	}
+	ajax.send(formdata);
+}

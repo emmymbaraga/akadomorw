@@ -56,6 +56,11 @@ function changeImages() {
 	setTimeout('changeImages()', 5000);
 }
 
+function click_hamburger() {
+	function _(id) {return document.getElementById(id); }
+	_("hamburger_btn").click();
+}
+
 function send_email() {
 	function _(id) {return document.getElementById(id); }
 	const x = _("slider_image");
