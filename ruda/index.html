@@ -11,11 +11,12 @@
 		/>
 		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 		<script src="https://use.fontawesome.com/c28c4f7255.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="style.css" />
 		<link rel="shortcut icon" href="./images/logo.jpeg" type="image/x-icon">
 		<title>RUDA Investment LTD</title>
 	</head>
-	<body>
+	<body onload="changeImages();">
 		<div w3-include-html="./components/navbar.html"></div>
 		<div w3-include-html="./components/menu.html"></div>
 		<div w3-include-html="./components/body.html"></div>
@@ -24,7 +25,7 @@
 		<div w3-include-html="./components/team.html"></div>
 		<div w3-include-html="./components/contact.html"></div>
 		<div w3-include-html="./components/footer.html"></div>
-		<script src="script.js"></script>
+		<script src="include_templates.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script>
 			includeHTML();
@@ -35,5 +36,6 @@
 			integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 			crossorigin="anonymous"
 		></script>
+		<script src="script.js"></script>
 	</body>
 </html>

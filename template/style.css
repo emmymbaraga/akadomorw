@@ -2,6 +2,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+img {
+	object-fit: cover;
+}
+
 .intro-section {
 	position: relative;
 	padding: 0;
