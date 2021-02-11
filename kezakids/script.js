@@ -77,7 +77,7 @@ function includeHTML() {
 	document.querySelector('#address').innerHTML = 'Kigali City Tower';
 	document.querySelector('#street').innerHTML = 'KN 2 Avenue';
 	document.querySelector('#email').innerHTML = 'sobirikunzira@gmail.com';
-	// document.querySelector('#phone').innerHTML = '+250788374674';
+	document.querySelector('#phone').innerHTML = '+250788202193';
 
 }
 
