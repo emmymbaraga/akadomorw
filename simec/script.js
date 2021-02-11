@@ -106,100 +106,114 @@ const images = [
 const serviceImages = [
   {
     image: "./images/img4.jpg",
-    title: "Title 1",
+    title: "",
     text: `Repairing and maintenances of irrigation equipment , materials  that given through Small Scale Irrigation Program(SSIT) , subsidesand large scale irrigation system equipment.`,
   },
   {
     image: "./images/img5.jpg",
-    title: "Title 1",
+    title: "",
     text: `Research on agriculture through irrigation, environmental`,
   },
   {
     image: "./images/img6.jpg",
-    title: "Title 1",
+    title: "",
     text: `Irrigation project management`,
   },
   {
     image: "./images/img7.jpg",
-    title: "Title 1",
+    title: "",
     text: `Conservation and disaster risk reduction.`,
   },
   {
     image: "./images/img4.jpg",
-    title: "Title 1",
+    title: "",
     text: `Mobilize the benefits of modern agriculture , Irrigation, fertilizers application, rain water harvesting, disaster management and environmental conservation.`,
   },
   {
     image: "./images/img2.jpg",
-    title: "Title 2",
+    title: "",
     text:
       "Tree plantation around river banks and waste canals, terrace construction.",
   },
   {
     image: "./images/img3.jpg",
-    title: "Title 3",
+    title: "",
     text: `Rain water harvesting from mountain, house roof, plant, and irrigate edible trees`,
   },
   {
     image: "./images/img3.jpg",
-    title: "Title 3",
+    title: "",
     text: `Emphasize re-use of purified domestic water in irrigating kitchen garden and home activities like washing clothes, mopping and others.`,
   },
   {
     image: "./images/img3.jpg",
-    title: "Title 3",
+    title: "",
     text: `To assist farmers to increase agricultural production on small plots of land through irrigation and link farmers with markets.`,
   },
   {
     image: "./images/img3.jpg",
-    title: "Title 3",
+    title: "",
     text: `Train farmers/community about  irrigation, environmental`,
   },
 ];
 
 function changeImages() {
-  document.slide.src = images[i];
-  document.imgservice.src = serviceImages[j].image;
-  document.querySelector("#title-service").innerHTML = serviceImages[j].title;
-  document.querySelector("#text-service").innerHTML = serviceImages[j].text;
+	function _(id) {return document.getElementById(id); }
+	if(_("slider_image") !== null) {
+		_("slider_image").setAttribute('src', images[i]);
+		_("imgservice").setAttribute('src', serviceImages[j].image);
+	
+		document.querySelector('#title-service').innerHTML = serviceImages[j].title;
+		document.querySelector('#text-service').innerHTML = serviceImages[j].text;
+	
+		if (i < images.length - 1) {
+			i++;
+		} else {
+			i = 0;
+		}
 
-  if (i < images.length - 1) {
-    i++;
-  } else if (j < serviceImages.length - 1) {
-    j++;
-  } else {
-    i = 0;
-    j = 0;
-  }
-  setTimeout("changeImages", 3000);
+		if(j < serviceImages.length - 1) {
+			j++
+		} else {
+			j = 0;
+		}
+	}
+
+	setTimeout('changeImages()', 5000);
 }
-window.onload = changeImages;
 
-function submitForm() {
-  var status = _("response_status");
-  status.innerHTML = "Please wait ...";
-  var formdata = new FormData();
-  formdata.append("email", _("email_from").value);
-  formdata.append("message", _("contact_message").value);
-  var ajax = new XMLHttpRequest();
-  ajax.open("POST", "send_email.php");
-  ajax.onreadystatechange = function () {
-    if (ajax.readyState == 4 && ajax.status == 200) {
-      if (ajax.responseText == "success") {
-        _("email_from").value = "";
-        _("contact_message").value = "";
-        _("response_status").innerHTML = "Thank you! your message is sent";
-        setTimeout(function () {
-          _("response_status").innerHTML = "";
-        }, 3000);
-      } else {
-        _("response_status").innerHTML = ajax.responseText;
-        _("my_btn").disabled = false;
-        setTimeout(function () {
-          _("response_status").innerHTML = "";
-        }, 3000);
-      }
-    }
-  };
-  ajax.send(formdata);
+function click_hamburger() {
+	function _(id) {return document.getElementById(id); }
+	_("hamburger_btn").click();
+}
+
+
+function send_email() {
+	function _(id) {return document.getElementById(id); }
+	const x = _("slider_image");
+	console.log('change image function', x);
+	var status = _("response_status");
+	if(_("email_from").value !== "" && _("email_from").value.includes("@") && _("contact_message").value !== ""){
+		status.innerHTML = "Sending message ...";
+		var formdata = new FormData();
+		formdata.append("email", _("email_from").value );
+		formdata.append("message", _("contact_message").value );
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST", "send_email.php");
+		ajax.onreadystatechange = function () {
+			if(ajax.readyState == 4 && ajax.status == 200) {
+				if(ajax.responseText == "success") {
+					_("email_from").value = "";
+					_("contact_message").value = "";
+					status.innerHTML = 'Thanks your message is sent';
+					setTimeout(function(){ status.innerHTML = ""; }, 5000);
+				} else {
+					status.innerHTML = ajax.responseText;
+					_("my_btn").disabled = false;
+					setTimeout(function(){ status.innerHTML = ""; }, 5000);
+				}
+			}
+		}
+		ajax.send(formdata);
+	}
 }
