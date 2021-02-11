@@ -36,16 +36,13 @@ function includeHTML() {
 	 */
 
 	// In NavBar section add logo image
-	document.logo.src = './images/company_logo.jpg';
+	document.logo.src = './images/logo.png';
 
 	// In menu section, the first section below navbar
 	document.querySelector('#company-title').innerHTML = 'Hot On My Heels';
 	document.querySelector('#company-desc').innerHTML = `
-	"Welcome to Hot on my heels an online store bringing you All unique details in your closet; Apparel and accessories to make you Stan!
-
-	Are you a lover of beautiful details in your wardrobe? Here to serve you All day, Everyday with our fast delivery service.
-	
-	"`;
+	Welcome to Hot on my heels an online store bringing you All unique details in your closet; Apparel and accessories to make you Stan!
+`;
 
 	// In who we are section
 	document.querySelector(
@@ -76,7 +73,7 @@ function includeHTML() {
 	// In contact us section
 	document.querySelector('#address').innerHTML = 'Kigali, Rwanda';
 	document.querySelector('#street').innerHTML = 'KG 546ST';
-	document.querySelector('#email').innerHTML = 'akanakintamaange@gmail.com';
+	document.querySelector('#email').innerHTML = 'hotonmyheels250@gmail.com';
 	document.querySelector('#phone').innerHTML = '+250788511024';
 
 	// Link to social media
@@ -104,29 +101,41 @@ const serviceImages = [
 		title: 'Kimono',
 		text: 'A Brown Kimono with that elegant look.',
 	},
-	{ image: './images/s1.jpg', title: 'Pattern Scarf', text: 'A luxurious dazzling long and diaphanous scarf for your neck.' },
-	{ image: './images/s4.jpg', title: 'Earings', text: 'Round Army Greens.' },
+	{ image: './images/s1.png', title: 'Pattern Scarf', text: 'A luxurious dazzling long and diaphanous scarf for your neck.' },
+	{ image: './images/armygreen.png', title: 'Earings', text: 'Round Army Greens.' },
 	{ image: './images/s2.jpg', title: 'Hats', text: 'Bucket Brown-ish.' },
-	{ image: './images/s3.jpg', title: 'Bags', text: 'croc Shoulder Bag.' },
+	{ image: './images/s3.png', title: 'Bags', text: 'croc Shoulder Bag.' },
 ];
 
 function changeImages() {
-	document.slide.src = images[i];
-	document.imgservice.src = serviceImages[j].image;
-	document.querySelector('#title-service').innerHTML = serviceImages[j].title;
-	document.querySelector('#text-service').innerHTML = serviceImages[j].text;
+	function _(id) {return document.getElementById(id); }
+	if(_("slider_image") !== null) {
+		_("slider_image").setAttribute('src', images[i]);
+		_("imgservice").setAttribute('src', serviceImages[j].image);
+	
+		document.querySelector('#title-service').innerHTML = serviceImages[j].title;
+		document.querySelector('#text-service').innerHTML = serviceImages[j].text;
+	
+		if (i < images.length - 1) {
+			i++;
+		} else {
+			i = 0;
+		}
 
-	if (i < images.length - 1) {
-		i++;
-	} else if (j < serviceImages.length - 1) {
-		j++;
-	} else {
-		i = 0;
-		j = 0;
+		if(j < serviceImages.length - 1) {
+			j++
+		} else {
+			j = 0;
+		}
 	}
-	setTimeout('changeImages()', 3000);
+
+	setTimeout('changeImages()', 5000);
 }
-window.onload = changeImages;
+
+function click_hamburger() {
+	function _(id) {return document.getElementById(id); }
+	_("hamburger_btn").click();
+}
 
 function submitForm() {
 	var status = _("response_status");

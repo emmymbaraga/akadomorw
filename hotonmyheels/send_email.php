@@ -2,7 +2,7 @@
     if( isset($_POST['email']) && isset($_POST['message']) ){
         $e = $_POST['email']; // HINT: use preg_replace() to filter the data
         $m = $_POST['message'];
-        $to = "akanakintamaange@gmail.com";	
+        $to = "hotonmyheels250@gmail.com";	
         $from = $e;
         $subject = 'Contact Form Message';
         $message = '<b>Message:</b><p>'.$m.'</p>';
